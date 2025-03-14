@@ -100,7 +100,7 @@ The core language is pretty much complete I think:
 |`(apply proc args)`|call `proc` with `args`|
 |`(atom? obj)`|return true if obj is an atom: `()` `#t` or symbol|
 |`(call/cc (lambda (cc) body))`|also `call-with-current-continuation`|
-|`(call/cc)`|fast version of `(call/cc (lambda (cc) cc))`|
+|`(call/cc)`|fast sugar for `(call/cc (lambda (cc) cc))`|
 |`(car list)`|head of list|
 |`(cdr list)`|tail of list|
 |`(cons obj1 obj2)`|create a pair or prepend `obj1` to list `obj2`|
