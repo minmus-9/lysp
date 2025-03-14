@@ -78,11 +78,11 @@ The core language is pretty much complete I think:
 
 |Special Form|Description|
 |--------------------------|-----------------------------|
-|`(begin e1 e2 ...)`|evaluate the expressions in order and return the last one|
+|`(begin e1 e2 ...)`|evaluate the expressions in order and return the value of the last one|
 |`(cond ((p c) ...)`|return `(eval c)` for the `(eval p)` that returns true|
 |`(define sym value)`|bind `value` to `sym` in the current environment|
 |`(define (sym args) body)`|bind `(lambda (args) body)` to `sym` in the current environment|
-|`(if p c a)`|return `(eval c)` if `(eval p)` returns true else `(eval a)`|
+|`(if p c a)`|if `Predicate` then `Consequent` else `Alternative`|
 |`(lambda (args) body)`|create a function|
 |`(quasiquote x)`|aka \`, begin quasiquoted form|
 |`(quote obj)`|aka `'`, returns obj unevaluated|
@@ -92,6 +92,9 @@ The core language is pretty much complete I think:
 |`(trap obj)`|returns a list containing a success-flag and a result or error message|
 |`(unquote x)`|aka `,` unquote x|
 |`(unquote-splicing x)`|aka `,@` unquote and splice in x|
+
+Quasiquotation is supported; see lisp.lisp for some examples. There is no
+macro system in this LISP, just quasiquote.
 
 |Primitive|Description (see the source)|
 |--------------------------|------------------------------|
