@@ -70,6 +70,8 @@ to run code from a file. Finally,
 ```
 loads the specified files and then enters the REPL.
 
+Note that `lisp.lisp` is automatically loaded by `lisp.py`.
+
 ## The Language
 
 The core language is pretty much complete I think:
