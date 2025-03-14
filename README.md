@@ -163,7 +163,8 @@ require separate treatment. The basic support for FFI lives in `lcore.py`
 and is trampolined as well -- so potentially recursive LISP<->Python
 data structure conversions won't blow up the python stack. Just keep in
 mind that this makes it slow! For example, `(range 0 100000 1)` takes
-about 25ms (`range` is implemented as an optimized primitive); meanwhile,
+about 25ms (`range` is implemented as an optimized primitive for
+benchmarking); meanwhile,
 ```
 @ffi("range")
 def op_ffi_range(args):
@@ -269,7 +270,16 @@ should eventually get cleaned up.
 
 Internal exceptions (wrong #args etc) generate Python exceptions
 that are handled in the usual Python way; LISP exception handling
-is very basic (see `trap`) and terrible (see `trap`).
+is very basic (see `trap`) and terrible (see `trap`). If there's an
+error, you *MUST* clear the stack, etc like the REPL in `lcore.py`
+does.
+
+## API
+
+XXX TODO
+
+See the `__all__` portion of `lcore.py`. The `lisp.py` file is a
+demo of the low-level stuff.
 
 ## License
 
