@@ -1,16 +1,20 @@
-# Python LISP: Solution In Search Of A Problem
+# Python LYSP: Solution In Search Of A Problem
 
-Yes, yes, another &^%ing LISP written in Python. Yeah, its name even
-has a %^#%$ `p` and a &^@&^ `y` in it.
+OH NO! Another &^%ing LISP written in Python??! Yeah, and its name even
+has a %^#%$ `P` and a &^@&^ `Y` in it.
 
 This one is a little different from the others I've studied in that it
-(a) was written for the explicit purpose of reading ``Structure and
-Interpretation of Computer Programs'' (SICP aka the Wizard Book, see
-the references below), and (b) has been written in
-continuation-passing-style (CPS) and uses trampolines throughout (see
-refs). It supports first-class continuations of unlimited extent via
-`call/cc` and also has proper tail-call support for "unlimited" tail
-recursion.
+
+- was written for the explicit purpose of getting through ``Structure
+and Interpretation of Computer Programs'' (SICP aka the Wizard Book,
+see the references below), and
+
+- has been written in continuation-passing-style (CPS) and uses
+trampolines throughout (see refs).
+
+It supports first-class continuations of unlimited extent via
+`call/cc` and also has proper tail-call support for unlimited tail
+recursion:
 
 ```
 (define (loop f)
@@ -18,12 +22,15 @@ recursion.
     (f)
     (c c))
 
+(define (while f)
+    (if (f) (while f) ()))
+
 (define (! n)
     (define (iter product k)
         (if (< k 2)  product  (iter (* product k) (- k 1))))
     (iter 1 n))
 
-(print (! 100000))  ;; takes almost as long to print as compute!
+(print (! 100000))  ;; Python printing takes as long as the lysp calculation!
 ```
 
 It's fairly complete in that I was able to work through SICP with this
@@ -34,7 +41,8 @@ reading SICP but this is the best of them (it is very slow of course).
 You won't blow out the Python runtime stack with this LISP because
 it isn't recursive at the Python level -- due to the use of trampolines
 and CPS. The VM uses registers and an explicit stack to maintain state
-between CPS jumps; purely recursive code makes heavy use of this stack.
+between CPS jumps; purely recursive code also makes heavy use of this
+stack:
 
 ```
 (define (! n) (if (< n 2)  1  (* n (! (- n 1)))))
