@@ -82,7 +82,6 @@ The core language is pretty much complete I think:
 |`(cond ((p c) ...)`|return `(eval c)` for the `(eval p)` that returns true|
 |`(define sym value)`|bind `value` to `sym` in the current environment|
 |`(define (sym args) body)`|bind `(lambda (args) body)` to `sym` in the current environment|
-|`(do ...)`|same as `begin`|
 |`(if p c a)`|return `(eval c)` if `(eval p)` returns true else `(eval a)`|
 |`(lambda (args) body)`|create a function|
 |`(quasiquote x)`|aka \`, begin quasiquoted form|

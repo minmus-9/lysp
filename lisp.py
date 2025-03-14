@@ -85,7 +85,6 @@ def binary(ctx, f):
 
 
 @spcl("begin")
-@spcl("do")
 def op_begin(ctx):
     args = ctx.argl
     if args is EL:
