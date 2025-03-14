@@ -1,4 +1,4 @@
-# Python LYSP: Solution In Search Of A Problem
+# Python LISP: Solution In Search Of A Problem
 
 OH NO! Another &^%ing LISP written in Python??! Yeah, and its name even
 has a %^#%$ `P` and a &^@&^ `Y` in it.
@@ -225,7 +225,7 @@ What's happening here is the elimination of Python function/method
 calls *at all costs*; in particular, at the cost of readability :D
 Function calls are so expensive that eliminating them can give you
 a 100% speedup (Python 3.10.12 Pop-OS! 22.04 LTS on a System76
-i7-based Meerkat).
+i7-based Meerkat in low power mode).
 
 Pairs are represented as 2-lists so `cons(x, y)` is `[x, y]`. This,
 or its equivalent, is about the only thing that works with the
