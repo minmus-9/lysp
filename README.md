@@ -79,7 +79,7 @@ The core language is pretty much complete I think:
 |Special Form|Description|
 |--------------------------|-----------------------------|
 |`(begin e1 e2 ...)`|evaluate the expressions in order and return the value of the last one|
-|`(cond ((p c) ...)`|return `(eval c)` for the `(eval p)` that returns true|
+|`(cond ((p c) ...)`|return the `Consequent` for the `Predicate` that returns true|
 |`(define sym value)`|bind `value` to `sym` in the current environment|
 |`(define (sym args) body)`|bind `(lambda (args) body)` to `sym` in the current environment|
 |`(if p c a)`|if `Predicate` then `Consequent` else `Alternative`|
@@ -93,7 +93,7 @@ The core language is pretty much complete I think:
 |`(unquote x)`|aka `,` unquote x|
 |`(unquote-splicing x)`|aka `,@` unquote and splice in x|
 
-Quasiquotation is supported; see lisp.lisp for some examples. There is no
+Quasiquotation is supported; see `lisp.lisp` for some examples. There is no
 macro system in this LISP, just quasiquote.
 
 |Primitive|Description (see the source)|
@@ -107,28 +107,29 @@ macro system in this LISP, just quasiquote.
 |`(car list)`|head of list|
 |`(cdr list)`|tail of list|
 |`(cons obj1 obj2)`|create a pair or prepend `obj1` to list `obj2`|
-|`(/ n1 n2)`|`n1 / n2`|
-|`(eq? x y)`|return true if 2 atoms are the same|
-|`(equal? n1 n2)`|return true if n1 and n2 are equal|
+|`(/ n1 n2)`|rerurn `n1 / n2`|
+|`(eq? x y)`|return true if the atoms `x` and `y` are the same|
+|`(equal? n1 n2)`|return `#t` if `n1` and `n2` are equal else `()`|
 |`(error obj)`|raise `lcore.error` with `obj`|
 |`(eval obj)`|evaluate `obj`|
 |`(eval obj n_up)`|evaluate `obj` up `n_up` namespaces|
 |`(exit obj)`|raise `SystemExit` with the given `obj`|
-|`(< n1 n2)`|return #t if `n1` < `n2` else ()|
+|`(< n1 n2)`|return `#t` if `n1` < `n2` else `()`|
 |`(* n1 n2)`|return `n1 * n2`|
 |`(nand n1 n2)`|return `~(n1 & n2)`|
-|`(null? x)`|return #t if x is () else ()|
+|`(null? x)`|return `#t` if x is `()` else `()`|
 |`(print ...)`|print a list of objects space-separated followed by a newline|
-|`(range start stop step)`|same as the python function, *much* faster than FFI|
+|`(range start stop step)`|same as the python function but return a list|
 |`(set-car! pair value)`|set the car of a pair|
 |`(set-cdr! pair value)`|set the cdr of a pair|
-|`(- n1 n2)`|`n1 - n2`|
+|`(- n1 n2)`|return `n1 - n2`|
 |`(type obj)`|return a symbol representing the type of `obj`|
 
 You'll note that `+` is not in the list. It is implemented in the standard
-library in terms of subtraction. `nand` is used to create all of the other
+library in terms of subtraction. `nand` is used to create all of the usual
 basic bitwise ops. There's no predefined I/O either since it isn't clear
-what is wanted there, but see the next section.
+what is wanted there, but this code is very easy to extend. Also, see the
+next section.
 
 ## FFI
 
@@ -158,7 +159,18 @@ def op_ffi_math(args):
 which gets you the whole `math` module at once. See the "ffi" section of
 `lisp.py` for the whole scoop. There are interfaces to `math`, `random`,
 and `time` so far, along with some odds and ends like `(shuffle)` that
-require separate treatment.
+require separate treatment. The basic support for FFI lives in `lcore.py`
+and is trampolined as well -- so potentially recursive LISP<->Python
+data structure conversions won't blow up the python stack. Just keep in
+mind that this makes it slow! For example, `(range 0 100000 1)` takes
+about 25ms (`range` is implemented as an optimized primitive); meanwhile,
+```
+@ffi("range")
+def op_ffi_range(args):
+    start, stop, step = args
+    return list(range(start, stop, step))
+```
+takes over 1250ms.
 
 ## The Files
 
