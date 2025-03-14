@@ -1,6 +1,7 @@
 # Python LISP: Solution In Search Of A Problem
 
-Yes, yes, another &^%ing LISP written in Python.
+Yes, yes, another &^%ing LISP written in Python. Yeah, its name even
+has a %^#%$ `p` and a &^@&^ `y` in it.
 
 This one is a little different from the others I've studied in that it
 (a) was written for the explicit purpose of reading ``Structure and
@@ -251,8 +252,8 @@ is very basic (see `trap`) and terrible (see `trap`).
 This code is licensed under the GPLv3:
 
 ```
-SISOAP - python lisp: solution in search of a problem
-       https://github.com/minmus-9/sisoap
+lysp - python lisp: solution in search of a problem
+       https://github.com/minmus-9/lysp
 Copyright (C) 2025  Mark Hays (github:minmus-9)
 
 This program is free software: you can redistribute it and/or modify

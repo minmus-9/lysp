@@ -1,5 +1,5 @@
-;; sisoap - python lisp: solution in search of a problem
-;;       https://github.com/minmus-9/sisoap
+;; lysp - python lisp: solution in search of a problem
+;;       https://github.com/minmus-9/lysp
 ;;
 ;; from https://github.com/ecraven/r7rs-benchmarks/blob/master/src/conform.scm
 
