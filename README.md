@@ -8,7 +8,8 @@ This one is different from the others I've studied in that it:
 - Has been written in continuation-passing-style (CPS) and uses
 trampolines throughout (see refs),
 - Has first-class continuations with unlimited extent,
-- Has tail-call support, and
+- Has tail-call support,
+- Won't blow up the Python runtime stack, and
 - Was usable enough to get me through ``Structure and Interpretation of
 Computer Programs'' (SICP aka the Wizard Book, see the references below)
 
@@ -27,12 +28,6 @@ Computer Programs'' (SICP aka the Wizard Book, see the references below)
         (if (< k 2)  product  (iter (* product k) (- k 1))))
     (iter 1 n))
 ```
-
-You won't blow out the Python runtime stack with this LISP because
-it isn't recursive at the Python level -- due to the use of trampolines
-and CPS. The VM uses registers and an explicit stack to maintain state
-between CPS jumps; purely recursive code also makes heavy use of this
-stack.
 
 Consider this repository as a digital pensieve of how trampolines
 and CPS work. Hopefully it'll be of interest and help others get CPS.
