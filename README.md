@@ -131,16 +131,30 @@ The `lisp.lisp` standard library defines a bunch of procedures:
 |`(assert expr)`|raise an error unless `expr` is true|
 |`(caddr)...(caddddr)`|extract initial elements from a list|
 |`(copysign x y)`|return `|x|` with sign of `y`|
+|`(fold-left f x0 list)`|see SICP p.158-65|
+|`(fold-right f x0 list)`|see SICP p.158-65|
 |`(foreach f list)`|call `f` for each element of `list` discarding the results|
+|`(join list ...)`|concatenate lists|
 |`(last list)`|return the last element of `list`|
 |`(length list)`|return the length of `list`|
+|`(let ((var value) ...) body)`|same as `((lambda (vars) body) values)`|
+|`(let* ((var value ...) body)`|same but each `value` can access preceding `vars`|
+|`(letrec ((var value) ...) body)`|same but all vars are pre-declared|
 |`(list & args)`|create a list from args|
+|`(loop f)`|infinite loop calling `(f)`|
+|`(loop-with-break f)`|infinite loop calling `(f break)`, call `break` to terminate loop|
 |`(lshift x n)`|bitwise left shift `x` `n` bits|
+|`(map f & lists)`|return list of `(f x ...)` for each `(car list)` in `lists`|
+|`(map1 f list)`|return list of `(f x)` for each `x` in `list`|
 |`(not x)`|logical negation of `x`|
 |`(or ...)`|logical-or of args|
+|`(ftranspose f lists)`|similar to `map` but over the transpose of `lists`|
 |`(pair? x)`|return `#t` if `x` is a pair else `()`|
+|`(queue)`|create a queue, see `lisp.lisp`|
 |`(reverse list)`|return a reversed copy of `list`|
 |`(rshift x n)`|bitwise right shift `x` `n` bits|
+|`(table compare-proc)`|create an associative table, see `lisp.lisp`|
+|`(transpose lists)`|equivalent to `(ftranspose (lambda (x) x) lists)`|
 
 ## FFI
 
