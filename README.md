@@ -31,7 +31,8 @@ below),
 ```
 
 It weighs in at ~1400 Python SLOC and ~600 LISP SLOC (for the standard
-library). This may seem like a lot, but there's a lot in there!
+library). This may seem like a lot, but there's a lot in there -- see
+"The Language" below.
 
 If you think of something *actually useful* to do with a
 lisp-embedded-in-python, please let me know.
@@ -75,7 +76,7 @@ The core language is pretty much complete I think:
 |`(unquote x)`|aka `,` unquote x|
 |`(unquote-splicing x)`|aka `,@` unquote and splice in x|
 
-Quasiquotation is supported; see `lisp.lisp` for some examples. There is no
+Quasi-quotation is supported; see `lisp.lisp` for some examples. There is no
 macro system in this LISP, just quasiquote.
 
 |Primitive|Description (see the source)|
@@ -89,7 +90,7 @@ macro system in this LISP, just quasiquote.
 |`(car list)`|head of list|
 |`(cdr list)`|tail of list|
 |`(cons obj1 obj2)`|create a pair or prepend `obj1` to list `obj2`|
-|`(/ n1 n2)`|rerurn `n1 / n2`|
+|`(/ n1 n2)`|return `n1 / n2`|
 |`(eq? x y)`|return true if the atoms `x` and `y` are the same|
 |`(equal? n1 n2)`|return `#t` if `n1` and `n2` are equal else `()`|
 |`(error obj)`|raise `lcore.error` with `obj`|
@@ -148,7 +149,7 @@ The `lisp.lisp` standard library defines a bunch of procedures in LISP:
 |`(loop f)`|infinite loop calling `(f)`|
 |`(loop-with-break f)`|infinite loop calling `(f break)`, call `(break)` to terminate loop|
 |`(lshift x n)`|bitwise left shift `x` by `n` bits|
-|`(map f & lists)`|return list of `(f x ...)` for each `x,y,...` in `(map1 car lists)` in `lists`|
+|`(map f & lists)`|return list of `(f x ...)` for each `x,y,...` in `(map1 car lists)` over `lists`|
 |`(map1 f list)`|return list of `(f x)` for each `x` in `list`|
 |`(not x)`|logical negation of `x`|
 |`(or ...)`|logical-or of args|
