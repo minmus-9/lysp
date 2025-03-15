@@ -7,11 +7,11 @@
 This one is different from the others I've studied in that it:
 - Has been written in continuation-passing-style (CPS) and uses
 trampolines throughout (see refs),
+- Is usable enough to get through ``Structure and Interpretation of
+Computer Programs'' (SICP aka the Wizard Book, see the references below)
 - Has first-class continuations with unlimited extent,
 - Has tail-call support,
 - Won't blow up the Python runtime stack, and
-- Was usable enough to get me through ``Structure and Interpretation of
-Computer Programs'' (SICP aka the Wizard Book, see the references below)
 
 ```
 (define (loop f)
@@ -29,11 +29,8 @@ Computer Programs'' (SICP aka the Wizard Book, see the references below)
     (iter 1 n))
 ```
 
-Consider this repository as a digital pensieve of how trampolines
-and CPS work. Hopefully it'll be of interest and help others get CPS.
-Aside from that, as a practical library, this code is a SISOAP.
-
-If you think of something useful to do with it, please let me know!
+If you think of something *actually useful* to do with a
+lisp-embedded-in-python, please let me know.
 
 ## Running the Code
 
