@@ -133,7 +133,10 @@ The `lisp.lisp` standard library defines a bunch of procedures:
 |`(copysign x y)`|return `|x|` with sign of `y`|
 |`(fold-left f x0 list)`|see SICP p.158-65|
 |`(fold-right f x0 list)`|see SICP p.158-65|
+|`(for f start stop step)`|call `(f i)` for each `i` in the given range|
 |`(foreach f list)`|call `f` for each element of `list` discarding the results|
+|`(gcd x y)`|greatest common divisor of `x` and `y`|
+|`(iter-func f x0 n)`|compose `f` with itself `n` times|
 |`(join list ...)`|concatenate lists|
 |`(last list)`|return the last element of `list`|
 |`(length list)`|return the length of `list`|
@@ -154,7 +157,9 @@ The `lisp.lisp` standard library defines a bunch of procedures:
 |`(reverse list)`|return a reversed copy of `list`|
 |`(rshift x n)`|bitwise right shift `x` `n` bits|
 |`(table compare-proc)`|create an associative table, see `lisp.lisp`|
+|`(timeit proc reps)`|call `(f i)` for `i=0..reps-1` and report timing info|
 |`(transpose lists)`|equivalent to `(ftranspose (lambda (x) x) lists)`|
+|`(while f)`|loop on `(f)` while `(f)` returns true|
 
 ## FFI
 
