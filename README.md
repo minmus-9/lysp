@@ -1,20 +1,20 @@
 # Python LISP: Solution In Search Of A Problem
 
-OH NO! Another &^%ing LISP written in Python??! Yeah, and its name even
-has a `P` and a &^@&^ `Y` in it.
+"OH NO! Another &^%ing LISP written in Python??!"
+
+"Yeah, and its name even has a `P` and a &^@&^ `Y` in it."
 
 This one is different from the others I've studied in that it:
 
 - Has been written in continuation-passing-style (CPS) and uses
 trampolines throughout (see refs),
 
-- Has first-class continuations of unlimited extent
+- Has first-class continuations with unlimited extent,
 
-- Has tail-call support
+- Has tail-call support, and
 
-- Was written for the explicit purpose of getting through ``Structure
-and Interpretation of Computer Programs'' (SICP aka the Wizard Book,
-see the references below)
+- Was usable enough to get me through ``Structure and Interpretation of
+Computer Programs'' (SICP aka the Wizard Book, see the references below)
 
 ```
 (define (loop f)
@@ -32,20 +32,16 @@ see the references below)
     (iter 1 n))
 ```
 
-It's fairly complete in that I was able to work through SICP with this
-interpreter; in fact, this is an implementation of some of the material
-in chapter 5 in Python instead of Scheme. I wrote several LISPs while
-reading SICP but this is the best of them (it is very slow of course).
+I wrote around a dozen LISPs while reading SICP. This is a really fun
+way to do it: "Hey, mine can't do that example!" Two days later... done!
+Back to the book. Brain explodes. "Rewrite!" Once I got to the part on
+tail calls in chapter 5, I started the code that became this repo.
 
 You won't blow out the Python runtime stack with this LISP because
 it isn't recursive at the Python level -- due to the use of trampolines
 and CPS. The VM uses registers and an explicit stack to maintain state
 between CPS jumps; purely recursive code also makes heavy use of this
-stack:
-
-```
-(define (! n) (if (< n 2)  1  (* n (! (- n 1)))))
-```
+stack.
 
 Consider this repository as a digital pensieve of how trampolines
 and CPS work. Hopefully it'll be of interest and help others get CPS.
