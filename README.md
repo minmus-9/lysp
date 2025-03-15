@@ -30,7 +30,8 @@ below),
     (iter 1 n))
 ```
 
-It weighs in at ~1400 Python SLOC and ~600 LISP SLOC.
+It weighs in at ~1400 Python SLOC and ~600 LISP SLOC (for the standard
+library). This may seem like a lot, but there's a lot in there!
 
 If you think of something *actually useful* to do with a
 lisp-embedded-in-python, please let me know.
