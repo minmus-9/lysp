@@ -28,11 +28,6 @@ Computer Programs'' (SICP aka the Wizard Book, see the references below)
     (iter 1 n))
 ```
 
-I wrote around a dozen LISPs while reading SICP. This is a really fun
-way to do it: "Hey, mine can't do that example!" Two days later... done!
-Back to the book. Brain explodes. "Rewrite!" Once I got to the part on
-tail calls in chapter 5, I started the code that became this repo.
-
 You won't blow out the Python runtime stack with this LISP because
 it isn't recursive at the Python level -- due to the use of trampolines
 and CPS. The VM uses registers and an explicit stack to maintain state
