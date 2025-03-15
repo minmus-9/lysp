@@ -8,10 +8,11 @@ This one is different from the others I've studied in that it:
 - Has been written in continuation-passing-style (CPS) and uses
 trampolines throughout (see refs),
 - Is usable enough to get through ``Structure and Interpretation of
-Computer Programs'' (SICP aka the Wizard Book, see the references below)
+Computer Programs'' (SICP aka the Wizard Book, see the references
+below),
 - Has first-class continuations with unlimited extent,
-- Has tail-call support,
-- Won't blow up the Python runtime stack, and
+- Has tail-call support, and
+- Won't blow up the Python runtime stack.
 
 ```
 (define (loop f)
