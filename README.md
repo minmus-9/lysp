@@ -111,9 +111,9 @@ You'll note that `+` is not in the list. It is implemented in the standard
 library in terms of subtraction. `nand` is used to create all of the usual
 basic bitwise ops. There's no predefined I/O either since it isn't clear
 what is wanted there, but this code is very easy to extend. Also, see the
-next section.
+next section on the FFI interface.
 
-The `lisp.lisp` standard library defines a bunch of procedures:
+The `lisp.lisp` standard library defines a bunch of procedures in LISP:
 
 |Name|Description|
 |----|----|
@@ -135,6 +135,7 @@ The `lisp.lisp` standard library defines a bunch of procedures:
 |`(fold-right f x0 list)`|see SICP p.158-65|
 |`(for f start stop step)`|call `(f i)` for each `i` in the given range|
 |`(foreach f list)`|call `f` for each element of `list` discarding the results|
+|`(ftranspose f lists)`|similar to `map` but over the transpose of `lists`|
 |`(gcd x y)`|greatest common divisor of `x` and `y`|
 |`(iter-func f x0 n)`|compose `f` with itself `n` times|
 |`(join list ...)`|concatenate lists|
@@ -145,17 +146,16 @@ The `lisp.lisp` standard library defines a bunch of procedures:
 |`(letrec ((var value) ...) body)`|same but all vars are pre-declared|
 |`(list & args)`|create a list from args|
 |`(loop f)`|infinite loop calling `(f)`|
-|`(loop-with-break f)`|infinite loop calling `(f break)`, call `break` to terminate loop|
-|`(lshift x n)`|bitwise left shift `x` `n` bits|
-|`(map f & lists)`|return list of `(f x ...)` for each `(car list)` in `lists`|
+|`(loop-with-break f)`|infinite loop calling `(f break)`, call `(break)` to terminate loop|
+|`(lshift x n)`|bitwise left shift `x` by `n` bits|
+|`(map f & lists)`|return list of `(f x ...)` for each `x,y,...` in `(map1 car lists)` in `lists`|
 |`(map1 f list)`|return list of `(f x)` for each `x` in `list`|
 |`(not x)`|logical negation of `x`|
 |`(or ...)`|logical-or of args|
-|`(ftranspose f lists)`|similar to `map` but over the transpose of `lists`|
 |`(pair? x)`|return `#t` if `x` is a pair else `()`|
 |`(queue)`|create a queue, see `lisp.lisp`|
 |`(reverse list)`|return a reversed copy of `list`|
-|`(rshift x n)`|bitwise right shift `x` `n` bits|
+|`(rshift x n)`|bitwise right shift `x` by `n` bits|
 |`(table compare-proc)`|create an associative table, see `lisp.lisp`|
 |`(timeit proc reps)`|call `(f i)` for `i=0..reps-1` and report timing info|
 |`(transpose lists)`|equivalent to `(ftranspose (lambda (x) x) lists)`|
