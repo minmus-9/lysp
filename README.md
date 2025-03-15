@@ -5,14 +5,10 @@
 "Yeah, and its name even has a `P` and a &^@&^ `Y` in it."
 
 This one is different from the others I've studied in that it:
-
 - Has been written in continuation-passing-style (CPS) and uses
 trampolines throughout (see refs),
-
 - Has first-class continuations with unlimited extent,
-
 - Has tail-call support, and
-
 - Was usable enough to get me through ``Structure and Interpretation of
 Computer Programs'' (SICP aka the Wizard Book, see the references below)
 
