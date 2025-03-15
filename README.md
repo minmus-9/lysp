@@ -120,7 +120,7 @@ The `lisp.lisp` standard library defines a bunch of procedures:
 |`(+ x y)`|return `x + y`|
 |`(% n d)`|return `n` mod `d`|
 |`(& x y)`|bitwise and|
-|`(| x y)`|bitwise or|
+|`(\| x y)`|bitwise or|
 |`(^ x y)`|bitwise exclusive-or|
 |`(~ x)`|invert bits of `x`|
 |`(>= x y)`|return `#t` if `x >= y` else `()`|
@@ -133,11 +133,13 @@ The `lisp.lisp` standard library defines a bunch of procedures:
 |`(copysign x y)`|return `|x|` with sign of `y`|
 |`(foreach f list)`|call `f` for each element of `list` discarding the results|
 |`(last list)`|return the last element of `list`|
+|`(length list)`|return the length of `list`|
 |`(list & args)`|create a list from args|
 |`(lshift x n)`|bitwise left shift `x` `n` bits|
 |`(not x)`|logical negation of `x`|
 |`(or ...)`|logical-or of args|
 |`(pair? x)`|return `#t` if `x` is a pair else `()`|
+|`(reverse list)`|return a reversed copy of `list`|
 |`(rshift x n)`|bitwise right shift `x` `n` bits|
 
 ## FFI
