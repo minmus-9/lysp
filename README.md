@@ -1,20 +1,20 @@
 # Python LISP: Solution In Search Of A Problem
 
 OH NO! Another &^%ing LISP written in Python??! Yeah, and its name even
-has a %^#%$ `P` and a &^@&^ `Y` in it.
+has a `P` and a &^@&^ `Y` in it.
 
-This one is a little different from the others I've studied in that it
+This one is different from the others I've studied in that it:
 
-- was written for the explicit purpose of getting through ``Structure
+- Has been written in continuation-passing-style (CPS) and uses
+trampolines throughout (see refs),
+
+- Has first-class continuations of unlimited extent
+
+- Has tail-call support
+
+- Was written for the explicit purpose of getting through ``Structure
 and Interpretation of Computer Programs'' (SICP aka the Wizard Book,
-see the references below), and
-
-- has been written in continuation-passing-style (CPS) and uses
-trampolines throughout (see refs).
-
-It supports first-class continuations of unlimited extent via
-`call/cc` and also has proper tail-call support for unlimited tail
-recursion:
+see the references below)
 
 ```
 (define (loop f)
@@ -22,15 +22,14 @@ recursion:
     (f)
     (c c))
 
-(define (while f)
-    (if (f) (while f) ()))
+(define (loop f)
+    (f)
+    (loop f))
 
 (define (! n)
     (define (iter product k)
         (if (< k 2)  product  (iter (* product k) (- k 1))))
     (iter 1 n))
-
-(print (! 100000))  ;; Python printing takes as long as the lysp calculation!
 ```
 
 It's fairly complete in that I was able to work through SICP with this
