@@ -113,6 +113,33 @@ basic bitwise ops. There's no predefined I/O either since it isn't clear
 what is wanted there, but this code is very easy to extend. Also, see the
 next section.
 
+The `lisp.lisp` standard library defines a bunch of procedures:
+
+|Name|Description|
+|----|----|
+|`(+ x y)`|return `x + y`|
+|`(% n d)`|return `n` mod `d`|
+|`(& x y)`|bitwise and|
+|`(| x y)`|bitwise or|
+|`(^ x y)`|bitwise exclusive-or|
+|`(~ x)`|invert bits of `x`|
+|`(>= x y)`|return `#t` if `x >= y` else `()`|
+|`(<= x y)`|return `#t` if `x <= y` else `()`|
+|`(> x y)`|return `#t` if `x > y` else `()`|
+|`(abs x)`|absolute value|
+|`(and ...)`|logical-and or args|
+|`(assert expr)`|raise an error unless `expr` is true|
+|`(caddr)...(caddddr)`|extract initial elements from a list|
+|`(copysign x y)`|return `|x|` with sign of `y`|
+|`(foreach f list)`|call `f` for each element of `list` discarding the results|
+|`(last list)`|return the last element of `list`|
+|`(list & args)`|create a list from args|
+|`(lshift x n)`|bitwise left shift `x` `n` bits|
+|`(not x)`|logical negation of `x`|
+|`(or ...)`|logical-or of args|
+|`(pair? x)`|return `#t` if `x` is a pair else `()`|
+|`(rshift x n)`|bitwise right shift `x` `n` bits|
+
 ## FFI
 
 Rather than adding everything under the sun as a built-in (I'm thinking of
